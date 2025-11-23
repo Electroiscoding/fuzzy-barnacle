@@ -1,0 +1,115 @@
+question,answer
+"Consider a real massless scalar field in (1+1)-dimensional Minkowski spacetime with metric $ds^2 = -dt^2 + dx^2$. Restrict to the right Rindler wedge $x > |t|$ (i.e., $u = t - x < 0$). An observer follows the worldline of constant $\rho = 1/a > 0$ in Rindler coordinates $( \tau, \rho )$, defined by $t = (\rho/a) \sinh(a \tau)$, $x = (\rho/a) \cosh(a \tau)$, so $ds^2 = -(a \rho)^2 d\tau^2 + d\rho^2$. The field splits into independent left- and right-moving chiral components; focus on the right-mover $\phi(u)$ obeying the chiral wave equation $\partial_u^2 \phi = 0$.
+
+The Minkowski modes are $u_{\omega}(u) = \frac{1}{\sqrt{4\pi \omega}} e^{-i \omega u}$ for $\omega > 0$, orthonormal under the symplectic inner product $(f,g) = i \int_{-\infty}^{\infty} du \, f^{*} \partial_u g = \delta(\omega - \omega')$ when restricted appropriately to the wedge. The field is $\phi(u) = \int_0^\infty d\omega \left[ a_{\omega} u_{\omega}(u) + a_{\omega}^{\dagger} u_{\omega}^{*}(u) \right]$, with $[a_{\omega}, a_{\omega'}^{\dagger}] = \delta(\omega - \omega')$.
+
+**(a)** Derive the $\rho$-independent form of the normalized Rindler modes $v_{\Omega}(u)$ for $\Omega > 0$ in the right wedge ($u < 0$), positive frequency with respect to $\tau$.
+
+**(b)** Express the Bogoliubov coefficients $\alpha_{\omega \Omega} = (u_{\omega}, v_{\Omega})$, $\beta_{\omega \Omega} = -(u_{\omega}, v_{\Omega}^{*})$ via the inner product restricted to the wedge $(f,g)_{\wedge} = i \int_{-\infty}^{0} du \, f^{*} \partial_u g$.
+
+**(c)** Evaluate $\beta_{\omega \Omega}$ explicitly using the change of variables and the Gamma function representation $\int_0^{\infty} dz \, z^{\gamma-1} e^{-s z} = \Gamma(\gamma) s^{-\gamma}$ ($|\arg s| < \pi/2$, extended by analytic continuation), choosing the principal branch.
+
+**(d)** Compute $|\beta_{\omega \Omega}|^2$ using the identity $|\Gamma(i y)|^2 = \pi/(y \sinh(\pi y))$ $(y > 0)$ and verify the normalization $|\alpha_{\omega \Omega}|^2 - |\beta_{\omega \Omega}|^2 = \delta(\omega - \Omega)$.
+
+**(e)** Show that the number density of Rindler particles in the Minkowski vacuum is $\langle 0_M | b_{\Omega}^{\dagger} b_{\Omega} | 0_M \rangle = \int_0^{\infty} d\omega \, |\beta_{\omega \Omega}|^2 = \frac{1}{e^{2\pi \Omega / a} - 1}$, implying Unruh temperature $T = a/(2\pi)$.
+
+**(f)** Compute the renormalized energy density $\langle T_{\tau\tau} \rangle_{\wedge}$ (with respect to Rindler time $\tau$ at fixed $\rho$) in the Minkowski vacuum, using point-splitting regularization, and confirm it matches the (2+1)D Planck spectrum contribution from right-movers: $\langle T_{\tau\tau} \rangle = -\frac{\pi}{12} \left( \frac{T}{\rho} \right)^2 = -\frac{1}{24 \pi (a \rho)^2}$.","**(a)** From the coordinate transformation, $u = t - x = -\rho e^{-a \tau}$. Solving for $\tau$, $\tau = -\frac{1}{a} \ln(-a u / \rho)$. The Rindler modes solve $(\rho^2 \partial_{\tau}^2 - \partial_{\rho}^2 ) \phi = 0$, and for positive $\tau$-frequency $\Omega > 0$ take the form $"
+"Consider the one-dimensional transverse-field Ising model for a closed chain of $N$ sites (with periodic boundary conditions) described by the Hamiltonian
+\[
+H = -J \sum_{i=1}^N \sigma_i^x \sigma_{i+1}^x - h \sum_{i=1}^N \sigma_i^z,
+\]
+where $\sigma_{N+1}^x = \sigma_1^x$, the $\sigma_i^{\alpha}$ are Pauli matrices ($\alpha = x,z$), $J>0$, and $h>0$. Use the Jordan-Wigner transformation to map this to free spinless fermions. Perform a Fourier transform and Bogoliubov diagonalization to find the exact single-particle energy dispersion $\epsilon_k$. Then, derive the ground-state energy $E_0$ in the thermodynamic limit $N \to \infty$ for the specific case $h = J = 1$. Finally, compute the spontaneous magnetization $M = -\frac{1}{N} \frac{\partial E_0}{\partial h}$ in this limit as a function of $h/J$.","Apply the Jordan-Wigner transformation to map spins to fermions:
+\[
+\sigma_i^z = 1 - 2 c_i^\dagger c_i, \quad \sigma_i^- = c_i \exp\left(i\pi \sum_{j=1}^{i-1} c_j^\dagger c_j \right), \quad \sigma_i^x = \sigma_i^+ + \sigma_i^- = \prod_{j=1}^{i-1} (1-2c_j^\dagger c_j) (c_i + c_i^\dagger).
+\]
+Substituting into $H$ yields the fermionic Hamiltonian (after lengthy algebra, dropping boundary terms negligible for large $N$):
+\[
+H = -\sum_i \left( J (c_i^\dagger c_{i+1} + c_{i+1}^\dagger c_i) + h (2c_i^\dagger c_i - 1) + J (c_i^\dagger c_{i+1}^\dagger + c_{i+1} c_i) \right).
+\]
+For periodic boundary conditions, introduce even/odd fermion sectors via the parity operator $P = (-1)^{\sum c_i^\dagger c_i}$, but in the thermodynamic limit $N\to\infty$, boundary effects vanish, and we Fourier transform:
+\[
+c_k = \frac{1}{\sqrt{N}} \sum_j e^{-i k j} c_j, \quad k = \frac{2\pi m}{N}, \ m = 0, \dots, N-1.
+\]
+The bilinear form becomes
+\[
+H = \sum_k \begin{pmatrix} c_k^\dagger & c_{-k} \end{pmatrix} \begin{pmatrix} 2(h - J \cos k) & -2i J \sin k \\ 2i J \sin k & -2(h - J \cos k) \end{pmatrix} \begin{pmatrix} c_k \\ c_{-k}^\dagger \end{pmatrix} + \text{const.},
+\]
+up to a constant shift $-N h$. More precisely, the quadratic Hamiltonian is
+\[
+H + N h = \sum_k \left[ (2h - 2J \cos k) (2 c_k^\dagger c_k - 1) + 2J (\gamma_k c_k^\dagger c_{-k}^\dagger + \gamma_k^* c_{-k} c_k) \right],
+\]
+where $\gamma_k = -i \sin k$.
+
+Perform Bogoliubov transformation:
+\[
+\eta_k = u_k c_k + v_k c_{-k}^\dagger, \quad \eta_{-k}^\dagger = u_k c_{-k}^\dagger - v_k c_k,
+\]
+with $|u_k|^2 + |v_k|^2 = 1$ to preserve anticommutation relations. The conditions for diagonalization $H + Nh = \sum_k \epsilon_k (\eta_k^\dagger \eta_k - 1/2)$ yield
+\[
+\epsilon_k = 2 \sqrt{ (h - J \cos k)^2 + (J \sin k)^2 } = 2 \sqrt{ h^2 + J^2 - 2 h J \cos k },
+\]
+with
+\[
+|u_k|^2 = \frac{1}{2} \left(1 +"
+"Consider a two-dimensional electron gas consisting of non-interacting spin-$\frac{1}{2}$ fermions of effective mass $m$ and charge $-e$ ($e>0$) at zero temperature $T=0$, in a uniform magnetic field $\mathbf{B}=B\hat{z}$ ($B>0$) perpendicular to the 2D plane of area $A$. Use units where $\hbar=k_B=1$. The spin degeneracy is $g_s=2$ (neglect Zeeman coupling). The single-particle energy levels are the Landau levels $\epsilon_n=\omega_c\left(n+\frac{1}{2}\right)$, $n=0,1,2,\dots$, where $\omega_c=eB/m$ is the cyclotron frequency. The degeneracy of each Landau level (including spin) is $D=eBA/(2\pi)$ (or per unit area $d=eB/(2\pi)$).
+
+The total number of electrons is $N=nA$, where $n$ is the fixed areal density.
+
+(a) Express the filling factor $\nu=n/d$ in terms of $B$. Determine the integer number $N_L$ of completely filled Landau levels and the fractional filling $f$ ($0\leq f<1$) of the next level $n=N_L$ such that the total density $n$ is satisfied exactly at $T=0$.
+
+(b) Compute the ground-state energy per unit area $u_0(n,B)=\langle H\rangle/A$.
+
+(c) Compute the magnetization per unit area $m(n,B)=-\left(\partial u_0/\partial B\right)_n$. Show that $m$ exhibits sawtooth-like oscillations as a function of $1/B$, and give the explicit form of $m$ within intervals where $N_L$ is constant, as well as the jump discontinuity when $f=0$.","(a) The degeneracy per unit area per Landau level (including $g_s=2$) is $d=eB/(2\pi)$. The filling factor is $\nu=n/d=2\pi n/(eB)$. Let $s=\nu=2\pi n/(eB)$ (note $s\propto 1/B$). Then $N_L=\lfloor s \rfloor$ (floor function, integer part) and $f=s-N_L$ (fractional part, $0\leq f<1$). Thus, the levels $n=0,1,\dots,N_L-1$ are completely filled, contributing $N_L d$ electrons per unit area, and the level $n=N_L$ is filled to fraction $f$, contributing $f d$ electrons per unit area. This satisfies $n=N_L d + f d=s d$.
+
+(b) The ground-state energy per unit area is the sum over occupied states:
+$$
+u_0(n,B)= \sum_{n=0}^{N_L-1} d \cdot \epsilon_n + f d \cdot \epsilon_{N_L}.
+$$
+Substitute $\epsilon_n=\omega_c(n+1/2)=(eB/m)(n+1/2)$:
+$$
+u_0= d \omega_c \left[ \sum_{n=0}^{N_L-1} \left(n+\frac{1}{2}\right) + f \left(N_L +\frac{1}{2}\right) \right].
+$$
+The sum is $\sum_{n=0}^{N_L-1} n = N_L(N_L-1)/2$ and $\sum_{n=0}^{N_L-1} (1/2)=N_L/2$, so $\sum_{n=0}^{N_L-1} (n+1/2)=N_L^2/2$. Thus,
+$$
+u_0= d \omega_c \left[ \frac{N_L^2}{2} + f \left(N_L +\frac{1}{2}\right) \right].
+$$
+Insert $d=eB/(2\pi)$, $\omega_c=eB/m$:
+$$
+u_0= \frac{eB}{2\pi} \cdot \frac{eB}{m} \left[ \frac{N_L^2}{2} + f \left(N_L +\frac{1}{2}\right) \right] = \frac{(eB)^2}{2\pi m} \left[ \frac{N_L^2}{2} + f \left(N"
+"Consider a massless real scalar field in (1+1)-dimensional Minkowski spacetime with coordinates $(t,x)$ and metric $ds^2 = dt^2 - dx^2$. Define the right-moving part $\phi_R(u)$ with null coordinate $u = t - x$. The Minkowski mode expansion is
+\[
+\phi_R(u) = \int_0^\infty \frac{d\omega}{\sqrt{4\pi\omega}} \bigl( a_\omega \, e^{-i\omega u} + a_\omega^\dagger \, e^{i\omega u} \bigr),
+\]
+where $[a_\omega, a_{\omega'}^\dagger] = \delta(\omega - \omega')$.
+
+Introduce Rindler coordinates $(\tau, \xi)$ for the right wedge ($x > |t|$):
+\[
+t = \frac{1}{a} e^{a\xi} \sinh(a\tau), \quad x = \frac{1}{a} e^{a\xi} \cosh(a\tau),
+\]
+with metric $ds^2 = e^{2a\xi} (d\tau^2 - d\xi^2)$. In these coordinates, $u = -\frac{1}{a} e^{a(\xi - \tau)}$. The corresponding Rindler mode expansion in the right wedge is
+\[
+\phi_R(u) = \int_0^\infty \frac{d\Omega}{\sqrt{4\pi\Omega}} \bigl( c_\Omega \, (-au)^{-i\Omega/a} + c_\Omega^\dagger \, (-au)^{i\Omega/a} \bigr),
+\]
+where $[c_\Omega, c_{\Omega'}^\dagger] = \delta(\Omega - \Omega')$, and the branch of the logarithm is chosen such that $\arg(-au) = 0$ for $u < 0$.
+
+The operators are related by the Bogoliubov transformation
+\[
+c_\Omega = \int_0^\infty d\omega \bigl( \alpha_{\Omega\omega} \, a_\omega + \beta_{\Omega\omega} \, a_\omega^\dagger \bigr).
+\]
+Compute $\beta_{\Omega\omega}$ using the Klein-Gordon inner product restricted to the wedge $u < 0$,
+\[
+\langle f | g \rangle = i \int_{-\infty}^0 du \, f^*(u) \overleftrightarrow{\partial_u} g(u) = 2 \int_{-\infty}^0 du \, f^*(u) \bigl[ \partial_u g(u) \bigr],
+\]
+where the factor of 2 arises from $\partial_u [e^{-i\omega u}] = -i\omega e^{-i\omega u}$ and normalization conventions yielding $\langle f_\omega | f_{\omega'} \rangle = \delta(\omega - \omega')$. Show that the Minkowski vacuum $|0_M\rangle$ (defined by $a_\omega |0_M\rangle = 0$) appears thermal to the Rindler observer with $\langle 0_M | c_\Omega^\dagger c_\Omega | 0_M \rangle = \frac{1}{e^{2\pi \Omega / a} - 1}$, implying Unruh temperature $T = \frac{a}{2\pi}$.","The Rindler positive-frequency mode function (coefficient of $c_\Omega$) is
+\[
+f_\Omega(u) = \frac{1}{\sqrt{4\pi \Omega}} (-a u)^{-i \Omega / a}, \quad u < 0.
+\]
+The Minkowski positive-frequency mode is
+\[
+f_\omega(u) = \frac{1}{\sqrt{4\pi \omega}} e^{-i \omega u}.
+\]
+The Bogoliubov coefficient is $\beta_{\Omega \omega} = \langle f_\Omega | f_\omega \rangle^*$ (by convention for the dagger term; the sign is absorbed in phase).
+
+Compute $\langle f_\Omega | f_\omega \rangle = 2 \int_{-\infty}^0 du \, f_\Omega^*(u) \partial_u f_\omega(u)$. Since $\partial_u f_\omega(u) = -i \omega f_\omega(u)$,
+\[
+\langle f_\Omega | f_\omega \rangle = 2 (-i \omega) \int_{-\infty}^0 du \, f_\Omega^*(u) f_\omega(u) = -2 i \omega \int_{-\infty}^0 du \, f_\Omega^*(u) f_\omega(u)."
